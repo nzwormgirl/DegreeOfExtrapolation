@@ -7,7 +7,7 @@ This repository hosts code and data to calculate the extent to which forest and 
 **Note that the code for random forests must be run with 32bit R for the gradientForest package to run.**
 
 The repository contains 2 .R files and one .RData file containing the data used in the manuscript.
-* *RunDegreeExtrapolation_RF&MARS.R* contains code to calculate the degree of extrapolation using random forest and MARS models for two datasets.
+* *RunDegreeExtrapolation_RF&MARS.R* contains example code to calculate the degree of extrapolation using random forest and MARS models for two datasets.
 * *DegreeOfExtrapolation_functions.R* contains the functions required to calculate the degree of extrapolation using random forest and MARS models.
 * *FittedDataList.RData* contains a New Zealand dataset that can be used to calculate the degree of extrapolation for four biophysical variables on the New Zealand river network.
 
@@ -22,3 +22,4 @@ These functions both return a list containing two elements:
   * *Source* identifies between OOB (out of bag - random forest) or LOO (leave one out - MARS) predictions and predictions to new data.
   * *DegreeExtrap* contains the Degree of Extrapolation describing tendency towards extrapolation (positive values) versus interpolation (negative values). 
  
+ We also provide code to make maps and plots of the outputs to better visualise where extrapolation might be occuring in both environmental and geographic space.
