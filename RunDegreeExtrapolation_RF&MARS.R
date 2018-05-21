@@ -34,7 +34,7 @@ airquality <- airquality %>% na.omit
 # fit to all data except month 5, predicted to month 5. 
 DoEframeRF_airquality <- RFInterpExterp(myY = "Ozone", # response variable
                            myX = c("Solar.R", "Wind", "Temp"), # predictor variables
-                           myFrame        = airquality[airquality$Month != 5, ], # training data
+                           myFrame = airquality[airquality$Month != 5, ], # training data
                            myFrameOutside = airquality[airquality$Month == 5, ], # new data
                            ntree = 500, importance = "permute") # random forest settings
 
@@ -81,7 +81,7 @@ xyplot(segYmidpoint~ segXmidpoint|Source, data = DoEframeRF_FRE3$WeightFrame, gr
 
 DoEframeMARS_airquality <- EarthInterpExterp(myY = "Ozone", # response variable
                               myX = c("Solar.R", "Wind", "Temp"), # predictor variables 
-                              myFrame        = airquality[airquality$Month != 5, ], # training data
+                              myFrame = airquality[airquality$Month != 5, ], # training data
                               myFrameOutside = airquality[airquality$Month == 5, ]) # new data
 
 # predictions vs degree of extrapolation
@@ -96,8 +96,8 @@ xyplot(DegreeExtrap~PredBlind, groups = Source, data = DoEframeMARS_airquality$W
 myVar <- "FRE3"
 DoEframeMARS_FRE3 <- EarthInterpExterp(myY = names(FittedDataList[[myVar]])[1], # response variable
                               myX = names(FittedDataList[[myVar]])[3:10], # predictor variables 
-                              myFrame        = FittedDataList[[myVar]] [FittedDataList[[myVar]]$Island == "South", ], # training data
-                              myFrameOutside = FittedDataList[[myVar]] [FittedDataList[[myVar]]$Island == "North", ]) # new data
+                              myFrame = FittedDataList[[myVar]][FittedDataList[[myVar]]$Island == "South", ], # training data
+                              myFrameOutside = FittedDataList[[myVar]][FittedDataList[[myVar]]$Island == "North", ]) # new data
 
 # predictions vs degree of extrapolation
 xyplot(DegreeExtrap~PredBlind, groups = Source, data = DoEframeMARS_FRE3$WeightFrame,auto.key = list(space = "right"))
