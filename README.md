@@ -4,7 +4,7 @@ Regression techniques are often used to predict responses across landscapes or u
 
 This repository hosts code and data to calculate the extent to which forest and multivariate adaptive regression spline (MARS) models extrapolate beyond the bounds of the training data (known as the degree of extrapolation). 
 
-**Note that the code for random forests must be run with 32bit R for the gradientForest package to run.**
+**Note that the gradientForest package requires that calculations for random forests be run using 32bit R.**
 
 The repository contains 2 .R files and one .RData file containing the data used in the manuscript.
 * *RunDegreeExtrapolation_RF&MARS.R* contains example code to calculate the degree of extrapolation using random forest and MARS models for two datasets.
