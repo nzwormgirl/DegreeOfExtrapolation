@@ -299,12 +299,12 @@ GetCV <- function(myRow, myY, myX, myFrame, ...) { # myModel,
     }
     
     # distances between all pairs of training data
-    DistTRAIN <- apply(as.matrix(dist(DistFrameTRAIN)), 2, sum, na.rm = T)
+    DistTRAIN <- apply(as.matrix(dist(DistFrameTRAIN)), 2, mean, na.rm = T)
     # distances between new and training data
-    DistNEW <- as.vector(sapply(1:nrow(DistFrameNEW) , function(n) sum(as.matrix(dist(rbind(DistFrameNEW[n, ], DistFrameTRAIN)))[1,-1] ))) 
+    DistNEW <- as.vector(sapply(1:nrow(DistFrameNEW) , function(n) mean(as.matrix(dist(rbind(DistFrameNEW[n, ], DistFrameTRAIN)))[1,-1] ))) 
     DistMEAN <- mean(DistTRAIN)
-    DistTRAIN <- (DistTRAIN - DistMEAN) / DistMEAN
-    DistNEW   <- (DistNEW - DistMEAN) / DistMEAN
+    DistTRAIN <- (DistTRAIN / DistMEAN) -1
+    DistNEW   <- (DistNEW / DistMEAN) -1
   } else {
     DistNEW <- NA
   }
@@ -420,12 +420,12 @@ GetDegreeExtrapEarth <- function(myModel, myNewData) {
       }
     }
     # distances between all pairs of training data
-    DistTRAIN <- apply(as.matrix(dist(DistFrameTRAIN)), 2, sum, na.rm = T)
+    DistTRAIN <- apply(as.matrix(dist(DistFrameTRAIN)), 2, mean, na.rm = T)
     # distances between new and training data
-    DistNEW <- as.vector(sapply(1:nrow(DistFrameNEW) , function(n) sum(as.matrix(dist(rbind(DistFrameNEW[n, ], DistFrameTRAIN)))[1,-1] ))) 
+    DistNEW <- as.vector(sapply(1:nrow(DistFrameNEW) , function(n) mean(as.matrix(dist(rbind(DistFrameNEW[n, ], DistFrameTRAIN)))[1,-1] ))) 
     DistMEAN <- mean(DistTRAIN)
-    DistTRAIN <- (DistTRAIN - DistMEAN) / DistMEAN
-    DistNEW   <- (DistNEW - DistMEAN) / DistMEAN
+    DistTRAIN <- (DistTRAIN / DistMEAN) -1
+    DistNEW   <- (DistNEW / DistMEAN) -1
   } else {
     DistNEW <- NA
   }

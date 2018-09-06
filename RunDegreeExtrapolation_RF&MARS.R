@@ -2,8 +2,15 @@
 #   Model fitting and testing; interpolation-extrapolation   #
 ##############################################################
 
+
+# IMPORTANT; Install Rtools from https://cran.r-project.org/bin/windows/Rtools/ - this is needed to install the extendedForest package from R-Forge.
 # IMPORTANT; Must be run using 32bit R. 
+
+# install.packages("extendedForest", repos="http://R-Forge.R-project.org")
 # install.packages("gradientForest", repos="http://R-Forge.R-project.org")
+# install.packages("randomForestSRC")
+# install.packages("earth")
+
 
 
 # Packages
@@ -47,7 +54,7 @@ histogram(~DegreeExtrap|Source, data = DoEframeRF_airquality$WeightFrame, col = 
 ##############################################################
 
 # set response variable of interest
-myVar <- "FRE3"
+myVar <- "MCI"
 head(FittedDataList[[myVar]])
 
 #  calculate degree of extrapolation
@@ -84,8 +91,14 @@ DoEframeMARS_airquality <- EarthInterpExterp(myY = "Ozone", # response variable
                               myFrame = airquality[airquality$Month != 5, ], # training data
                               myFrameOutside = airquality[airquality$Month == 5, ]) # new data
 
+DoEframeMARS_airquality <- EarthInterpExterp(myY = "Ozone", # response variable
+                                             myX = c("Solar.R", "Wind", "Temp"), # predictor variables 
+                                             myFrame = airquality[airquality$Month >= 8, ], # training data
+                                             myFrameOutside = airquality[airquality$Month < 8, ]) # new data
+
 # predictions vs degree of extrapolation
 xyplot(DegreeExtrap~PredBlind, groups = Source, data = DoEframeMARS_airquality$WeightFrame,auto.key = list(space = "right"))
+histogram(~DegreeExtrap|Source, data = DoEframeMARS_airquality$WeightFrame)
 
 
 
@@ -101,5 +114,6 @@ DoEframeMARS_FRE3 <- EarthInterpExterp(myY = names(FittedDataList[[myVar]])[1], 
 
 # predictions vs degree of extrapolation
 xyplot(DegreeExtrap~PredBlind, groups = Source, data = DoEframeMARS_FRE3$WeightFrame,auto.key = list(space = "right"))
+histogram(~DegreeExtrap|Source, data = DoEframeMARS_FRE3$WeightFrame, layout = c(1,2))
 
 
