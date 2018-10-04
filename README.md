@@ -4,7 +4,7 @@ Regression techniques are often used to predict responses across landscapes or u
 
 This repository hosts code and data to calculate the extent to which forest and multivariate adaptive regression spline (MARS) models extrapolate beyond the bounds of the training data (known as the degree of extrapolation). A full description of this method has been published in *Water Resources Research* (see below for citation). For further details, contact Doug Booker (doug.booker at niwa.co.nz) or Amy Whitehead (amy.whitehead at niwa.co.nz).
 
-Booker, D.J. & A.L. Whitehead. (2018). Inside or outside: quantifying extrapolation across river networks. *Water Resources Research*. doi:10.1029/2018WR023378 [online]
+Booker, D.J. & A.L. Whitehead. (2018). Inside or outside: quantifying extrapolation across river networks. *Water Resources Research*. https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2018WR023378
 
 **Note that the gradientForest package requires that calculations for random forests be run using 32bit R. The extendedForest and gradientForest packages need to be installed from R-Forge (code provided) but require the additional installation of Rtools from https://cran.r-project.org/bin/windows/Rtools/ to compile the source code.**
 
